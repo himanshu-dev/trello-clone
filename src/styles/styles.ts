@@ -48,7 +48,7 @@ export const AddButton = styled.button<AddButtonProps>`
   max-width: 300px;
   width: 100%;
   text-align: left;
-  color: ${(props) => props.dark ? '#424242' : '#fff'};
+  color: ${props => (props.dark ? '#424242' : '#fff')};
   background-color: #ffffff3d;
   transition: background-color 85ms ease-in;
 
@@ -57,12 +57,20 @@ export const AddButton = styled.button<AddButtonProps>`
   }
 `
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.form<AddButtonProps>`
   max-width: 300px;
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: flex-start;
+  background-color: ${({ dark }) => (dark ? 'transparent' : '#ebecf0')};
+  padding: ${({ dark }) => (dark ? 0 : '8px 8px')};
+  border-radius: 3px;
+`
+
+export const ButtonRow = styled.div`
+  display: flex;
+  align-items: center;
 `
 
 export const NewItemButton = styled.button`
@@ -73,6 +81,28 @@ export const NewItemButton = styled.button`
   color: #fff;
   padding: 6px 12px;
   text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #3d9f22;
+  }
+`
+
+export const CancelIconButton = styled.button`
+  border-radius: 3px;
+  border: none;
+  box-shadow: none;
+  color: #635e5e;
+  padding: 4px 8px;
+  text-align: center;
+  margin-left: 4px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #bbc4b8;
+  }
 `
 
 export const NewItemInput = styled.input`
