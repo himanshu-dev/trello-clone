@@ -23,6 +23,20 @@ export const ColumnContainer = styled.div`
 export const ColumnTitle = styled.div`
   padding: 6px 16px 12px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    visibility: hidden;
+    height: 28px;
+  }
+
+  &:hover {
+    button {
+      visibility: visible;
+    }
+  }
 `
 
 export const CardContainer = styled.div`
@@ -99,9 +113,10 @@ export const CancelIconButton = styled.button`
   display: inline-flex;
   align-items: center;
   cursor: pointer;
+  transition: background-color 200ms ease-in;
 
   &:hover {
-    background-color: #bbc4b8;
+    background-color: rgba(217, 216, 216, 0.93);
   }
 `
 

@@ -1,4 +1,4 @@
-import { CardContainer } from '../styles/styles'
+import { CardContainer } from '../styles'
 
 type CardProps = {
   id: string

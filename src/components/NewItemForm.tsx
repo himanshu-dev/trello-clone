@@ -1,13 +1,12 @@
 import {
   ButtonRow,
-  CancelIconButton,
   FormContainer,
   NewItemButton,
   NewItemInput,
-} from '../styles/styles'
-import { FormEvent, useEffect, useState } from 'react'
-import { ReactComponent as CrossIcon } from '../assets/cross.svg'
-import { useFocus } from '../utils/useFocus'
+} from '../styles'
+import { FormEvent, useState } from 'react'
+import { useFocus } from '../utils'
+import { CancelButton } from './CancelButton'
 
 type NewItemFormProps = {
   onAdd(text: string): void
@@ -39,9 +38,7 @@ export const NewItemForm = (props: NewItemFormProps) => {
         <NewItemButton type={'submit'} onClick={handleSubmit}>
           Add
         </NewItemButton>
-        <CancelIconButton onClick={onCancel}>
-          <CrossIcon height={20} width={20} />
-        </CancelIconButton>
+        <CancelButton onCancel={onCancel} />
       </ButtonRow>
     </FormContainer>
   )

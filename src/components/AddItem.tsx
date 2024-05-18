@@ -1,4 +1,4 @@
-import { AddButton } from '../styles/styles'
+import { AddButton } from '../styles'
 import { useState } from 'react'
 import { NewItemForm } from './NewItemForm'
 
