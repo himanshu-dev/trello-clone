@@ -1,9 +1,11 @@
+import { useRef } from 'react'
 import { ColumnContainer, ColumnTitle } from '../styles'
-import { Card } from './Card'
-import { AddItem } from './AddItem'
-import { useAppState } from '../state'
-import { addTask } from '../state/actions'
-import { CancelButton } from './CancelButton'
+import { AddItem, CancelButton, Card } from './'
+import { addTask, moveList, useAppState } from '../state'
+import { useItemDrag } from '../utils/useItemDrag'
+import { throttle } from 'throttle-debounce-ts'
+import { useDrop } from 'react-dnd'
+import { isDraggedItem } from '../utils'
 
 type ColumnProps = {
   id: string
@@ -11,7 +13,27 @@ type ColumnProps = {
 }
 
 export const Column = ({ id: listId, text }: ColumnProps) => {
-  const { getTasksByListId, dispatch } = useAppState()
+  const { getTasksByListId, dispatch, draggedItem } = useAppState()
+  const { drag } = useItemDrag({ type: 'COLUMN', id: listId, text })
+  const ref = useRef<HTMLDivElement>(null)
+
+  const [, drop] = useDrop({
+    accept: 'COLUMN',
+    hover: throttle(200, () => {
+      if (!draggedItem) {
+        return
+      }
+
+      if (draggedItem.type === 'COLUMN') {
+        if (draggedItem.id === listId) {
+          return
+        }
+
+        dispatch(moveList(draggedItem.id, listId))
+      }
+    }),
+  })
+
   const tasks = getTasksByListId(listId)
 
   const handleAdd = (text: string) => {
@@ -20,8 +42,12 @@ export const Column = ({ id: listId, text }: ColumnProps) => {
 
   const handleCancel = () => {}
 
+  drag(drop(ref))
+
   return (
-    <ColumnContainer>
+    <ColumnContainer
+      ref={ref}
+      isHidden={isDraggedItem(draggedItem, 'COLUMN', listId)}>
       <ColumnTitle>
         {text} <CancelButton onCancel={handleCancel} />
       </ColumnTitle>

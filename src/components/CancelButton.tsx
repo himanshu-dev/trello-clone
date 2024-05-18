@@ -1,5 +1,4 @@
 import { CancelIconButton } from '../styles'
-
 import { ReactComponent as CrossIcon } from '../assets/cross.svg'
 
 export const CancelButton = (props: { onCancel: () => void }) => {
