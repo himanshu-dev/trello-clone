@@ -1,6 +1,6 @@
 import { AddButton } from '../styles'
 import { useState } from 'react'
-import { NewItemForm } from './'
+import { NewItemForm } from './NewItemForm'
 
 type AddItemProps = {
   text: string

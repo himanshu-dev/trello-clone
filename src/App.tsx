@@ -1,10 +1,8 @@
 import React from 'react'
 import './styles/App.css'
 import { AppContainer } from './styles'
-import { Column } from './components/Column'
-import { AddItem } from './components/AddItem'
-import { useAppState } from './state'
-import { addList } from './state/actions'
+import { addList, useAppState } from './state'
+import { AddItem, Column } from './components'
 
 const App = () => {
   const { lists, dispatch } = useAppState()

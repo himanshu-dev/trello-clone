@@ -1,11 +1,13 @@
 import { useRef } from 'react'
 import { ColumnContainer, ColumnTitle } from '../styles'
-import { AddItem, CancelButton, Card } from './'
 import { addTask, moveList, useAppState } from '../state'
 import { useItemDrag } from '../utils/useItemDrag'
 import { throttle } from 'throttle-debounce-ts'
 import { useDrop } from 'react-dnd'
 import { isDraggedItem } from '../utils'
+import { CancelButton } from './CancelButton'
+import { Card } from './Card'
+import { AddItem } from './AddItem'
 
 type ColumnProps = {
   id: string
