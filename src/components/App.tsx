@@ -1,10 +1,11 @@
 import React from 'react'
-import './styles/App.css'
-import { AppContainer } from './styles'
-import { addList, useAppState } from './state'
-import { AddItem, Column } from './components'
+import '../styles/App.css'
+import { AppContainer } from '../styles'
+import { addList, useAppState } from '../state'
+import { AddItem, Column } from './index'
+import { CustomDragLayer } from './CustomDragLayer'
 
-const App = () => {
+export const App = () => {
   const { lists, dispatch } = useAppState()
 
   const handleAdd = (text: string) => {
@@ -13,6 +14,8 @@ const App = () => {
 
   return (
     <AppContainer>
+      <CustomDragLayer />
+
       {lists.map(list => (
         <Column key={list.id} id={list.id} text={list.text} />
       ))}
@@ -21,5 +24,3 @@ const App = () => {
     </AppContainer>
   )
 }
-
-export default App

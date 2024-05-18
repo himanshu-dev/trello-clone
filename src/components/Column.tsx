@@ -1,10 +1,7 @@
 import { useRef } from 'react'
 import { ColumnContainer, ColumnTitle } from '../styles'
-import { addTask, moveList, useAppState } from '../state'
-import { useItemDrag } from '../utils/useItemDrag'
-import { throttle } from 'throttle-debounce-ts'
-import { useDrop } from 'react-dnd'
-import { isDraggedItem } from '../utils'
+import { addTask, useAppState } from '../state'
+import { isDraggedItem, useItemDrag, useItemDrop } from '../utils'
 import { CancelButton } from './CancelButton'
 import { Card } from './Card'
 import { AddItem } from './AddItem'
@@ -12,29 +9,14 @@ import { AddItem } from './AddItem'
 type ColumnProps = {
   id: string
   text: string
+  isPreview?: boolean
 }
 
-export const Column = ({ id: listId, text }: ColumnProps) => {
+export const Column = ({ id: listId, text, isPreview }: ColumnProps) => {
   const { getTasksByListId, dispatch, draggedItem } = useAppState()
   const { drag } = useItemDrag({ type: 'COLUMN', id: listId, text })
+  const { drop } = useItemDrop({ type: 'COLUMN', id: listId, text })
   const ref = useRef<HTMLDivElement>(null)
-
-  const [, drop] = useDrop({
-    accept: 'COLUMN',
-    hover: throttle(200, () => {
-      if (!draggedItem) {
-        return
-      }
-
-      if (draggedItem.type === 'COLUMN') {
-        if (draggedItem.id === listId) {
-          return
-        }
-
-        dispatch(moveList(draggedItem.id, listId))
-      }
-    }),
-  })
 
   const tasks = getTasksByListId(listId)
 
@@ -49,12 +31,13 @@ export const Column = ({ id: listId, text }: ColumnProps) => {
   return (
     <ColumnContainer
       ref={ref}
-      isHidden={isDraggedItem(draggedItem, 'COLUMN', listId)}>
+      isPreview={isPreview}
+      isHidden={isDraggedItem(draggedItem, 'COLUMN', listId) && !isPreview}>
       <ColumnTitle>
         {text} <CancelButton onCancel={handleCancel} />
       </ColumnTitle>
       {tasks.map(task => (
-        <Card key={task.id} id={task.id} text={task.text} />
+        <Card key={task.id} id={task.id} text={task.text} listId={listId} />
       ))}
       <AddItem dark={true} text={'Add another item'} onAdd={handleAdd} />
     </ColumnContainer>
