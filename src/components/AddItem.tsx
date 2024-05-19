@@ -30,7 +30,7 @@ export const AddItem = (props: AddItemProps) => {
   }
 
   return (
-    <AddButton dark={dark} onClick={handleClick}>
+    <AddButton $dark={dark} onClick={handleClick}>
       + {text}
     </AddButton>
   )

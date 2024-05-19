@@ -25,7 +25,7 @@ export const NewItemForm = (props: NewItemFormProps) => {
   }
 
   return (
-    <FormContainer dark={dark} onSubmit={handleSubmit}>
+    <FormContainer $dark={dark} onSubmit={handleSubmit}>
       <NewItemInput
         ref={ref}
         // autoFocus={true}

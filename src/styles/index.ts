@@ -11,12 +11,12 @@ export const AppContainer = styled.div`
 `
 
 type DragPreviewContainerProps = {
-  isHidden?: boolean
-  isPreview?: boolean
+  $isHidden?: boolean
+  $isPreview?: boolean
 }
 export const DragPreviewContainer = styled.div<DragPreviewContainerProps>`
-  transform: ${props => (props.isPreview ? 'rotate(-5deg)' : undefined)};
-  opacity: ${props => (props.isHidden ? 0 : 1)};
+  transform: ${props => (props.$isPreview ? 'rotate(-5deg)' : undefined)};
+  opacity: ${props => (props.$isHidden ? 0 : 1)};
 `
 
 export const ColumnContainer = styled(DragPreviewContainer)`
@@ -62,7 +62,7 @@ export const CardContainer = styled(DragPreviewContainer)`
 `
 
 type AddButtonProps = {
-  dark?: boolean
+  $dark?: boolean
 }
 export const AddButton = styled.button<AddButtonProps>`
   padding: 10px 12px;
@@ -73,7 +73,7 @@ export const AddButton = styled.button<AddButtonProps>`
   max-width: 300px;
   width: 100%;
   text-align: left;
-  color: ${props => (props.dark ? '#424242' : '#fff')};
+  color: ${props => (props.$dark ? '#424242' : '#fff')};
   background-color: #ffffff3d;
   transition: background-color 85ms ease-in;
 
@@ -88,8 +88,8 @@ export const FormContainer = styled.form<AddButtonProps>`
   flex-direction: column;
   width: 100%;
   align-items: flex-start;
-  background-color: ${({ dark }) => (dark ? 'transparent' : '#ebecf0')};
-  padding: ${({ dark }) => (dark ? 0 : '8px 8px')};
+  background-color: ${({ $dark }) => ($dark ? 'transparent' : '#ebecf0')};
+  padding: ${({ $dark }) => ($dark ? 0 : '8px 8px')};
   border-radius: 3px;
 `
 
@@ -151,14 +151,14 @@ export const CustomDragLayerContainer = styled.div`
 `
 
 type DragPreviewWrapperProps = {
-  position: {
+  $position: {
     x: number
     y: number
   }
 }
 
 export const DragPreviewWrapper = styled.div.attrs<DragPreviewWrapperProps>(
-  ({ position: { x, y } }) => ({
+  ({ $position: { x, y } }) => ({
     style: {
       transform: `translate(${x}px, ${y}px)`,
     },

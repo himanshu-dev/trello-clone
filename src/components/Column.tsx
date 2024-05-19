@@ -32,8 +32,8 @@ export const Column = ({ id, text, isPreview }: ColumnProps) => {
   return (
     <ColumnContainer
       ref={ref}
-      isPreview={isPreview}
-      isHidden={isDraggedItem(draggedItem, 'COLUMN', id) && !isPreview}>
+      $isPreview={isPreview}
+      $isHidden={isDraggedItem(draggedItem, 'COLUMN', id) && !isPreview}>
       <ColumnTitle>
         {text} <CancelButton onCancel={handleCancel} />
       </ColumnTitle>
