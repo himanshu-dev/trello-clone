@@ -2,8 +2,9 @@ import React from 'react'
 import '../styles/App.css'
 import { AppContainer } from '../styles'
 import { addList, useAppState } from '../state'
-import { AddItem, Column } from './index'
 import { CustomDragLayer } from './CustomDragLayer'
+import { Column } from './Column'
+import { AddItem } from './AddItem'
 
 export const App = () => {
   const { lists, dispatch } = useAppState()

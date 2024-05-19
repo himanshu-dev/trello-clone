@@ -6,7 +6,7 @@ import {
 } from '../styles'
 import { FormEvent, useState } from 'react'
 import { useFocus } from '../utils'
-import { CancelButton } from './'
+import { CancelButton } from './CancelButton'
 
 type NewItemFormProps = {
   onAdd(text: string): void
