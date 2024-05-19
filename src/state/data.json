@@ -1,0 +1,37 @@
+{
+  "listWithTasks": [
+    {
+      "id": "L1",
+      "text": "To Do",
+      "tasks": [
+        {
+          "id": "A1B2C3",
+          "text": "Complete the project proposal"
+        },
+        {
+          "id": "D4E5F6",
+          "text": "Review the quarterly financial report"
+        },
+        {
+          "id": "G7H8I9",
+          "text": "Prepare presentation for the upcoming meeting"
+        }
+      ]
+    },
+    {
+      "id": "L2",
+      "text": "In Progress",
+      "tasks": [
+        {
+          "id": "J1K2L3",
+          "text": "Schedule a team meeting for next week"
+        }
+      ]
+    },
+    {
+      "id": "L3",
+      "text": "Done",
+      "tasks": []
+    }
+  ]
+}

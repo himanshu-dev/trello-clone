@@ -10,7 +10,12 @@ export const findItemIndexById = <TItem extends Item>(
 }
 
 export function removeItemAtIndex<TItem>(array: TItem[], index: number) {
-  return [...array.slice(0, index), ...array.slice(index + 1)]
+  const removedItem = array[index]
+  const arrayWithItemRemoved = [
+    ...array.slice(0, index),
+    ...array.slice(index + 1),
+  ]
+  return { arrayWithItemRemoved, removedItem }
 }
 
 export function insertItemAtIndex<TItem>(
@@ -18,11 +23,11 @@ export function insertItemAtIndex<TItem>(
   index: number,
   item: TItem,
 ) {
+  // myLog({'inserting item': item })
   return [...array.slice(0, index), item, ...array.slice(index)]
 }
 
 export const moveItem = <TItem>(array: TItem[], from: number, to: number) => {
-  const item = array[from]
-  const arrayWithItemRemoved = removeItemAtIndex(array, from)
-  return insertItemAtIndex(arrayWithItemRemoved, to, item)
+  const { arrayWithItemRemoved, removedItem } = removeItemAtIndex(array, from)
+  return insertItemAtIndex(arrayWithItemRemoved, to, removedItem)
 }

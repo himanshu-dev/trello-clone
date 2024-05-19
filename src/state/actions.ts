@@ -18,6 +18,21 @@ export const moveList = (draggedId: string, hoverId: string): Action => ({
   },
 })
 
+export const moveTask = (
+  draggedCardId: string,
+  hoverCardId: string | null,
+  sourceColumnId: string,
+  targetColumnId: string,
+): Action => ({
+  type: 'MOVE_TASK',
+  payload: {
+    draggedCardId,
+    hoverCardId,
+    sourceColumnId,
+    targetColumnId,
+  },
+})
+
 export const setDraggedItem = (draggedItem: DragItem | null): Action => ({
   type: 'SET_DRAGGED_ITEM',
   payload: draggedItem,

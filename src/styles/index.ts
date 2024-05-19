@@ -56,6 +56,9 @@ export const CardContainer = styled(DragPreviewContainer)`
   max-width: 300px;
   border-radius: 3px;
   box-shadow: #091e4240 0 1px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: self-start;
 `
 
 type AddButtonProps = {
@@ -161,3 +164,12 @@ export const DragPreviewWrapper = styled.div.attrs<DragPreviewWrapperProps>(
     },
   }),
 )<DragPreviewWrapperProps>``
+
+export const Badge = styled.span`
+  color: white;
+  background-color: #f11e1e;
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-size: 12px;
+  display: inline-block;
+`

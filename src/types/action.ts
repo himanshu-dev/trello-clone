@@ -15,6 +15,16 @@ export type MoveListAction = {
   payload: { draggedId: string; hoverId: string }
 }
 
+export type MoveTaskAction = {
+  type: 'MOVE_TASK'
+  payload: {
+    draggedCardId: string
+    hoverCardId: string | null
+    sourceColumnId: string
+    targetColumnId: string
+  }
+}
+
 export type SetDraggedItemAction = {
   type: 'SET_DRAGGED_ITEM'
   payload: DragItem | null
@@ -25,3 +35,4 @@ export type Action =
   | AddTaskAction
   | MoveListAction
   | SetDraggedItemAction
+  | MoveTaskAction
