@@ -164,12 +164,3 @@ export const DragPreviewWrapper = styled.div.attrs<DragPreviewWrapperProps>(
     },
   }),
 )<DragPreviewWrapperProps>``
-
-export const Badge = styled.span`
-  color: white;
-  background-color: #f11e1e;
-  padding: 2px 6px;
-  border-radius: 12px;
-  font-size: 12px;
-  display: inline-block;
-`

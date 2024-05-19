@@ -1,6 +1,6 @@
-import { Badge, CardContainer } from '../styles'
+import { CardContainer } from '../styles'
 import { useRef } from 'react'
-import { isDraggedItem, useItemDrag, useCardDrop } from '../utils'
+import { isDraggedItem, useCardDrop, useItemDrag } from '../utils'
 import { useAppState } from '../state'
 
 type CardProps = {
@@ -22,7 +22,7 @@ export const Card = ({ id, text, columnId, isPreview }: CardProps) => {
       ref={ref}
       isPreview={isPreview}
       isHidden={isDraggedItem(draggedItem, 'CARD', id) && !isPreview}>
-      {text} <Badge>{id}</Badge>
+      {text}
     </CardContainer>
   )
 }

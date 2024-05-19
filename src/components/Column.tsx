@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Badge, ColumnContainer, ColumnTitle } from '../styles'
+import { ColumnContainer, ColumnTitle } from '../styles'
 import { addTask, useAppState } from '../state'
 import { isDraggedItem, useColumnDrop, useItemDrag } from '../utils'
 import { CancelButton } from './CancelButton'
@@ -35,7 +35,7 @@ export const Column = ({ id, text, isPreview }: ColumnProps) => {
       isPreview={isPreview}
       isHidden={isDraggedItem(draggedItem, 'COLUMN', id) && !isPreview}>
       <ColumnTitle>
-        {text} <Badge>{id}</Badge> <CancelButton onCancel={handleCancel} />
+        {text} <CancelButton onCancel={handleCancel} />
       </ColumnTitle>
       {tasks.map(task => (
         <Card key={task.id} id={task.id} text={task.text} columnId={id} />
